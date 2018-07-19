@@ -7,11 +7,15 @@ interface GenericIdentityFn<T> {
     (arg: T): T;
 }
 
+interface LengthWise {
+    length: number;
+}
+
 function identity<T>(arg: T) : T {
     return arg;
 }
 
-function loggingIdentity<T>(arg: Array<T>) : Array<T> {
+function loggingIdentity<T extends LengthWise>(arg: T) : T {
     console.log(arg.length);
     return arg;
 }
@@ -34,5 +38,7 @@ stringNumeric.zeroValue = "";
 stringNumeric.add = function(x, y) { return x + y; };
 
 alert(stringNumeric.add(stringNumeric.zeroValue, "test"));
+
+loggingIdentity({length: 10, value: 3});
 
 document.body.innerHTML = identity(output);
