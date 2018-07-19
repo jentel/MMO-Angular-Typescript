@@ -16,10 +16,4 @@ function greeter(person:Person) {
 
 let user = new Student("Jane", "M.", "User");
 
-function identity<T>(arg: T) : T {
-    return arg;
-}
-
-let output = identity<string>("myString"); // or identity("myString") will work too
-
 document.body.innerHTML = greeter(user);
